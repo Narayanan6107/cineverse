@@ -3,7 +3,7 @@ import cors from "cors"
 import morgan from "morgan"
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-
+import authRoutes from "./routes/authRoutes.js";
 dotenv.config();
 connectDB()
 const app=express()
@@ -18,6 +18,7 @@ app.get("/",(req,res)=>{
         message:"Server is running"
     })
 })
+app.use("/api/auth", authRoutes);
 
 app.listen(PORT,()=>{
     console.log("Server running")
